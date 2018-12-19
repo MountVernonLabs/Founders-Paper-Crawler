@@ -16,6 +16,12 @@ foreach ($data as $entry) {
 		echo str_replace("documents","API/docdata",$entry["permalink"])."\n"; //API URL
 		echo $entry["project"]."\n";
 		echo basename($entry["permalink"])."\n"; //ID number
+		if (in_array("Washington, George", $entry["authors"])){
+			echo "Author\n";
+		}
+		if (in_array("Washington, George", $entry["recipients"])){
+			echo "Recipient\n";
+		}		
 		echo "\n\n";
 	}
 }
