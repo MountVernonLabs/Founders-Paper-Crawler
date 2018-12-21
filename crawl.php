@@ -50,31 +50,32 @@ foreach ($data as $entry) {
 			echo $letter["content"]; 
 					
 			echo "\n\n";
-			
-			$mysqli->query("INSERT INTO `mv_papers`(`record`, `title`, `to_from`, `project`, `founders_url`, `date_from`, `date_to`, `authors`, `recipients`, `content`) 
-			VALUES (
-				'".basename($entry["permalink"])."', 
-				'".addslashes($entry["title"])."', 
-				'".$to_from."', 
-				'".addslashes($entry["project"])."', 
-				'".$entry["permalink"]."',
-				'".$entry["date-from"]."',
-				'".$entry["date-to"]."',
-				'".json_encode($entry["authors"])."',
-				'".json_encode($entry["recipients"])."',
-				'".addslashes($letter["content"])."'
-				
-			) 
-			ON DUPLICATE KEY UPDATE 
-				title = '".addslashes($entry["title"])."',
-				to_from = '".$to_from."', 
-				project = '".addslashes($entry["project"])."', 
-				founders_url = '".$entry["permalink"]."',
-				date_from = '".$entry["date-from"]."',
-				date_to = '".$entry["date-to"]."',
-				authors = '".json_encode($entry["authors"])."',
-				recipients = '".json_encode($entry["recipients"])."'
-			");
+			if ($letter["content"] != ""){
+				$mysqli->query("INSERT INTO `mv_papers`(`record`, `title`, `to_from`, `project`, `founders_url`, `date_from`, `date_to`, `authors`, `recipients`, `content`) 
+				VALUES (
+					'".basename($entry["permalink"])."', 
+					'".addslashes($entry["title"])."', 
+					'".$to_from."', 
+					'".addslashes($entry["project"])."', 
+					'".$entry["permalink"]."',
+					'".$entry["date-from"]."',
+					'".$entry["date-to"]."',
+					'".json_encode($entry["authors"])."',
+					'".json_encode($entry["recipients"])."',
+					'".addslashes($letter["content"])."'
+					
+				) 
+				ON DUPLICATE KEY UPDATE 
+					title = '".addslashes($entry["title"])."',
+					to_from = '".$to_from."', 
+					project = '".addslashes($entry["project"])."', 
+					founders_url = '".$entry["permalink"]."',
+					date_from = '".$entry["date-from"]."',
+					date_to = '".$entry["date-to"]."',
+					authors = '".json_encode($entry["authors"])."',
+					recipients = '".json_encode($entry["recipients"])."'
+				");
+			}
 			sleep(300);
 		} else {
 			echo "Already recorded: ".basename($entry["permalink"])."\n";
