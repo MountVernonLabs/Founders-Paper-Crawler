@@ -76,7 +76,7 @@ foreach ($data as $entry) {
 					recipients = '".json_encode($entry["recipients"])."'
 				");
 			}
-			sleep(300);
+			sleep(10);
 		} else {
 			echo "Already recorded: ".basename($entry["permalink"])."\n";
 		}
