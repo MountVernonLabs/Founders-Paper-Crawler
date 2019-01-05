@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.7.23)
 # Database: mv_dev
-# Generation Time: 2019-01-05 15:53:31 +0000
+# Generation Time: 2019-01-05 22:43:33 +0000
 # ************************************************************
 
 
@@ -36,7 +36,7 @@ CREATE TABLE `mv_papers` (
   `founders_url` text,
   `authors` text,
   `recipients` text,
-  `content` text,
+  `content` longtext,
   `words` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `record` (`record`),
