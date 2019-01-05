@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 10.58.0.11 (MySQL 5.7.23-log)
-# Database: prod_mntvernon
-# Generation Time: 2018-12-19 18:52:19 +0000
+# Host: localhost (MySQL 5.7.23)
+# Database: mv_dev
+# Generation Time: 2019-01-05 15:53:31 +0000
 # ************************************************************
 
 
@@ -37,8 +37,10 @@ CREATE TABLE `mv_papers` (
   `authors` text,
   `recipients` text,
   `content` text,
+  `words` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `record` (`record`)
+  UNIQUE KEY `record` (`record`),
+  KEY `to_from` (`to_from`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
