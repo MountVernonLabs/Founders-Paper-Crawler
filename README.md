@@ -8,3 +8,4 @@ Parses through the Founders Online website to retrieve all of George Washington'
 
 # Additional Features
 - Run php wordcount.php to go through all of the letters and populate the column for word count
+- Run php index.php to go through all of the letters and populate an index table in the database - useful for cross-referencing corespondances
