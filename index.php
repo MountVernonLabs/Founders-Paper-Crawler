@@ -22,16 +22,22 @@
 		$authors = json_decode($letter["authors"], TRUE);
 		foreach ($authors as $author) {
 			echo $author."\n";
-			$sql = "INSERT INTO mv_papers_index (letter, person, direction)
-			VALUES ('".$letter["record"]."', '".addslashes($author)."', 'author')";
+			$route = trim(preg_replace("/[^A-Za-z0-9 ]/", '', $author));
+			$route = str_replace(" ","-",$route);
+			$route = strtolower($route);
+			$sql = "INSERT INTO mv_papers_index (letter, person, direction, hash)
+			VALUES ('".$letter["record"]."', '".addslashes($author)."', 'author', '".$route."')";
 			$insert = $mysqli->query($sql);
 		}
 
 		$recipients = json_decode($letter["recipients"], TRUE);
 		foreach ($recipients as $recipient) {
 			echo $recipient."\n";
-			$sql = "INSERT INTO mv_papers_index (letter, person, direction)
-			VALUES ('".$letter["record"]."', '".addslashes($recipient)."', 'recipient')";
+			$route = trim(preg_replace("/[^A-Za-z0-9 ]/", '', $recipient));
+			$route = str_replace(" ","-",$route);
+			$route = strtolower($route);
+			$sql = "INSERT INTO mv_papers_index (letter, person, direction, hash)
+			VALUES ('".$letter["record"]."', '".addslashes($recipient)."', 'recipient', '".$route."')";
 			$insert = $mysqli->query($sql);
 		}
 		
